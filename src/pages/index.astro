@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const DOCS_URL = 'https://minderhq.github.io/docs/';
+const SELF_HOSTING_URL = 'https://minderhq.github.io/docs/self-hosting/';
+const CONTACT_URL = 'https://github.com/minderhq/www/issues/new';
+
+const pillars = [
+  {
+    title: 'Local inference',
+    body: 'Ollama-backed LLMs with no cloud API keys and no data leaving your box. Switch between local, external, and automatic failover.',
+  },
+  {
+    title: 'Knowledge — RAG and graph',
+    body: 'Retrieval that goes beyond naive vector search: hybrid, parent-child, corrective and RAPTOR hierarchical retrieval, plus a knowledge-graph path over the same documents.',
+  },
+  {
+    title: 'Extensible, safely',
+    body: 'Plugins are manifest-based, fixed handlers — never uploaded, arbitrary code. New tools register for LLM function-calling without trusting a stranger’s script.',
+  },
+  {
+    title: 'One control-plane UI',
+    body: 'Knowledge bases, pipelines, the graph explorer, plugins, models, and health — one coherent surface, not a pile of raw service forms.',
+  },
+  {
+    title: 'Observability built in',
+    body: 'Prometheus, Grafana, Jaeger, and OpenTelemetry wired in from the start, with self-healing status checks instead of silent failures.',
+  },
+  {
+    title: 'Runs on modest hardware',
+    body: 'ARM and Raspberry Pi are first-class targets. One command provisions the whole stack and fills in secrets for you.',
+  },
+];
+---
+
+<Layout
+  title="Minder — Your private AI platform"
+  description="Local inference, your own data, and an extensible tool ecosystem — installs on modest hardware with a single command."
+>
+  <header class="wrap hero">
+    <p class="eyebrow">Minder</p>
+    <h1>Your private AI platform.</h1>
+    <p class="lede">
+      Local inference, your own data, and an extensible tool ecosystem — that installs
+      on hardware you own, down to a Raspberry Pi, with a single command.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={SELF_HOSTING_URL}>Get started self-hosting</a>
+      <a class="btn btn-ghost" href={DOCS_URL}>Read the docs</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="pillars">
+      {
+        pillars.map((p) => (
+          <article class="card">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="split">
+      <h2>Run it your way</h2>
+      <div class="split-grid">
+        <div class="card">
+          <h3>Self-host</h3>
+          <p>
+            Run the full platform on hardware you own. <code>bash setup.sh</code>
+            provisions everything and self-heals. A free tier lets you evaluate it
+            end to end; a license unlocks the full product.
+          </p>
+          <a href={SELF_HOSTING_URL}>Self-hosting guide →</a>
+        </div>
+        <div class="card">
+          <h3>Hosted (in development)</h3>
+          <p>
+            A managed, multi-tenant hosted tier — team and enterprise licensing — is
+            under active development. Pricing and the free-tier boundary aren't
+            finalized yet.
+          </p>
+          <a href={CONTACT_URL}>Get in touch →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ecosystem">
+      <h2>Open ecosystem, licensed core</h2>
+      <p>
+        The plugin SDK, plugin template, first-party plugin catalog, and management
+        client are open on GitHub under <a href="https://github.com/minderhq">minderhq</a>.
+        The core platform is a licensed product — this keeps the parts you build
+        against open, while funding the platform itself.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>
+      <a href="https://github.com/minderhq">GitHub</a> ·
+      <a href={DOCS_URL}>Docs</a> ·
+      <a href={CONTACT_URL}>Contact</a>
+    </p>
+  </footer>
+</Layout>
+
+<style>
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin: 0 0 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin: 0 0 1.25rem;
+    line-height: 1.1;
+  }
+
+  .lede {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    color: var(--text-dim);
+    font-size: 1.15rem;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #06120e;
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  main {
+    padding-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin: 4rem 0 1.5rem;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  .card p {
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .ecosystem p {
+    color: var(--text-dim);
+    max-width: 720px;
+  }
+
+  .footer {
+    padding: 2rem 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    text-align: center;
+  }
+</style>
