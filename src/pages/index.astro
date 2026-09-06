@@ -89,11 +89,61 @@ const pillars = [
     <section class="ecosystem">
       <h2>Open ecosystem, licensed core</h2>
       <p>
-        The plugin SDK, plugin template, first-party plugin catalog, and management
-        client are open on GitHub under <a href="https://github.com/minderhq">minderhq</a>.
-        The core platform is a licensed product — this keeps the parts you build
-        against open, while funding the platform itself.
+        The core platform is a licensed product; the parts you build <em>against</em>
+        are open source on GitHub under
+        <a href="https://github.com/minderhq">minderhq</a>. Start from the template
+        and you have a working plugin in minutes — plugins are declarative and run
+        no uploaded code.
       </p>
+      <div class="repo-grid">
+        <a class="repo" href="https://github.com/minderhq/plugin-sdk"><b>plugin-sdk</b><span>Authoring contract &amp; SDK</span></a>
+        <a class="repo" href="https://github.com/minderhq/plugin-template"><b>plugin-template</b><span>Scaffold a new plugin</span></a>
+        <a class="repo" href="https://github.com/minderhq/plugins"><b>plugins</b><span>First-party &amp; community catalog</span></a>
+        <a class="repo" href="https://github.com/minderhq/client"><b>client</b><span>The management console UI</span></a>
+        <a class="repo" href="https://github.com/minderhq/cli"><b>cli</b><span>Command-line client</span></a>
+        <a class="repo" href="https://minderhq.github.io/docs/plugins/"><b>docs</b><span>Plugin authoring guide</span></a>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2>Questions, answered</h2>
+      <div class="faq-grid">
+        <div class="qa">
+          <h3>Is my data private?</h3>
+          <p>Yes — Minder is local-first. Inference runs on your own hardware via
+          Ollama, host ports are loopback-bound, and nothing leaves the box by
+          default. External access is reverse-proxy and SSO gated.</p>
+        </div>
+        <div class="qa">
+          <h3>What hardware do I need?</h3>
+          <p>It runs in Docker on x86-64 and ARM — Raspberry Pi 4 is a first-class,
+          verified target. One command provisions the whole stack.</p>
+        </div>
+        <div class="qa">
+          <h3>Is it open source?</h3>
+          <p>The <em>ecosystem</em> is (Apache-2.0): the plugin SDK, template,
+          catalog, web client, and CLI. The core platform is a licensed commercial
+          product — open where you build, funded where it counts.</p>
+        </div>
+        <div class="qa">
+          <h3>Can I extend it safely?</h3>
+          <p>Plugins are manifest-based, fixed handlers — never uploaded, arbitrary
+          code. New tools register for LLM function-calling without you trusting a
+          stranger's script.</p>
+        </div>
+        <div class="qa">
+          <h3>How do I get the platform?</h3>
+          <p>A free tier lets you evaluate it end to end; a license unlocks the full
+          product. A managed hosted tier is in development —
+          <a href={CONTACT_URL}>get in touch</a>.</p>
+        </div>
+        <div class="qa">
+          <h3>Where do I start?</h3>
+          <p>Read the <a href={DOCS_URL}>docs</a>, follow the
+          <a href={SELF_HOSTING_URL}>self-hosting guide</a>, or build a plugin from
+          the <a href="https://github.com/minderhq/plugin-template">template</a>.</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -199,6 +249,52 @@ const pillars = [
   .ecosystem p {
     color: var(--text-dim);
     max-width: 720px;
+  }
+
+  .repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .repo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease;
+  }
+
+  .repo:hover {
+    border-color: var(--accent);
+  }
+
+  .repo span {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .qa h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+  }
+
+  .qa p {
+    color: var(--text-dim);
+    margin: 0;
   }
 
   .footer {
