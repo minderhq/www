@@ -1,0 +1,19 @@
+name: Feature request
+description: Propose a new page, section, or improvement to the website
+title: "[feature]: "
+type: Feature
+labels: ["status:triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What would make the site better for visitors?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed content / change
+    validations:
+      required: true
