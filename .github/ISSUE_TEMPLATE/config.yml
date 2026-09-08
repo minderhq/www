@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Minder platform (core)
+    url: https://github.com/minderhq/minder
+    about: If this is about the product itself rather than the website, it may belong there instead.
+  - name: Minder documentation
+    url: https://github.com/minderhq/docs
+    about: If this is about the docs site content rather than the marketing site, it may belong there instead.
