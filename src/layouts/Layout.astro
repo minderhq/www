@@ -13,7 +13,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0d12" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0d12" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
@@ -43,8 +44,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --accent: #6ee7c7;
     --accent-dim: #2f6e5c;
     --border: #232833;
+    --btn-primary-text: #06120e;
     --max-width: 1080px;
-    color-scheme: dark;
+    color-scheme: light dark;
+  }
+
+  /* Light mode: honour the visitor's OS preference (parity with the docs site). */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --bg-raised: #f4f6f9;
+      --text: #171a1f;
+      --text-dim: #55606c;
+      --accent: #0b6e52;
+      --accent-dim: #6ee7c7;
+      --border: #e3e8ee;
+      --btn-primary-text: #ffffff;
+    }
   }
 
   * {
@@ -84,7 +100,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     left: 0.5rem;
     top: -3rem;
     background: var(--accent);
-    color: #06120e;
+    color: var(--btn-primary-text);
     padding: 0.6rem 1rem;
     border-radius: 8px;
     font-weight: 600;
