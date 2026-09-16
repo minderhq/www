@@ -225,6 +225,8 @@ export default function ProductPreview() {
             <button
               key={t.key}
               onClick={() => setTab(t.key)}
+              aria-label={t.label}
+              aria-current={tab === t.key ? 'true' : undefined}
               className={`relative mb-1 flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-[13px] transition-colors sm:px-3 ${
                 tab === t.key ? 'text-ink' : 'text-ink-dim hover:text-ink'
               }`}
