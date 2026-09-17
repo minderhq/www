@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MagneticLink from './MagneticLink'
 import ThemeToggle from './ThemeToggle'
@@ -14,6 +14,8 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+  const menuRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     const check = () => setScrolled(window.scrollY > 40)
@@ -22,11 +24,37 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', check)
   }, [])
 
+  // Track the md breakpoint so the off-screen mobile menu can be made inert
+  // (matches Tailwind's `md` = 768px). On desktop the menu is always visible.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
   useEffect(() => {
     if (open) document.body.style.overflow = 'hidden'
     else document.body.style.overflow = ''
     return () => { document.body.style.overflow = '' }
   }, [open])
+
+  // Close the mobile menu on Escape.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
+  // When the mobile menu is closed it's only pushed off-screen with CSS, so its
+  // links stay focusable / exposed to screen readers. Mark it inert to remove
+  // those phantom tab stops. Never inert on desktop, where the menu is shown.
+  const menuHidden = !isDesktop && !open
+  useEffect(() => {
+    if (menuRef.current) menuRef.current.inert = menuHidden
+  }, [menuHidden])
 
   return (
     <header
@@ -49,6 +77,8 @@ export default function Nav() {
         </motion.a>
 
         <motion.ul
+          ref={menuRef}
+          aria-hidden={menuHidden || undefined}
           className={`fixed inset-x-0 top-16 flex h-[calc(100vh-64px)] flex-col items-start gap-6 overflow-y-auto border-t border-border bg-bg px-6 py-8 transition-transform duration-300 md:static md:h-auto md:flex-row md:items-center md:gap-8 md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:transition-none ${
             open ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
           }`}
