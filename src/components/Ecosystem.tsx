@@ -4,11 +4,12 @@ import type { Tone } from './Badge'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
-const ECOSYSTEM: { slug: string; desc: string; tag: string; tone: Tone }[] = [
-  { slug: 'sdk/', desc: 'Build new capabilities using the plugin architecture.', tag: 'minder/sdk', tone: 'primary' },
-  { slug: 'catalog/', desc: 'Discover and share plugins across the Minder ecosystem.', tag: 'minder/catalog', tone: 'accent' },
-  { slug: 'console/', desc: 'Manage the platform through a modern web interface.', tag: 'minder/console', tone: 'secondary' },
-  { slug: 'cli', desc: 'Work with Minder from the command line.', tag: 'minder/cli', tone: 'terracotta' },
+const ECOSYSTEM: { slug: string; desc: string; tag: string; href: string; tone: Tone }[] = [
+  { slug: 'plugin-sdk/', desc: 'Build new capabilities using the plugin architecture.', tag: 'minderhq/plugin-sdk', href: 'https://github.com/minderhq/plugin-sdk', tone: 'primary' },
+  { slug: 'plugin-template/', desc: 'Scaffold a new plugin from a ready-made starting point.', tag: 'minderhq/plugin-template', href: 'https://github.com/minderhq/plugin-template', tone: 'secondary' },
+  { slug: 'plugins/', desc: 'Discover and share plugins across the Minder ecosystem.', tag: 'minderhq/plugins', href: 'https://github.com/minderhq/plugins', tone: 'accent' },
+  { slug: 'client/', desc: 'Manage the platform through a modern web interface.', tag: 'minderhq/client', href: 'https://github.com/minderhq/client', tone: 'terracotta' },
+  { slug: 'docs', desc: 'Learn how to install, configure, and extend Minder.', tag: 'minderhq/docs', href: 'https://github.com/minderhq/docs', tone: 'primary' },
 ]
 
 export default function Ecosystem() {
@@ -71,7 +72,9 @@ export default function Ecosystem() {
                     </span>
                     <span className="text-ink-dim sm:flex-1">{e.desc}</span>
                     <a
-                      href="#"
+                      href={e.href}
+                      target="_blank"
+                      rel="noreferrer"
                       className="whitespace-nowrap text-[11px] uppercase tracking-[0.06em] text-accent no-underline transition-all duration-200 hover:underline hover:opacity-80"
                     >
                       {e.tag} ↗

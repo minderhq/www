@@ -34,7 +34,7 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     title: 'open',
-    desc: 'Built on an ecosystem designed to be extended, forked, and self-hosted — no lock-in, ever.',
+    desc: 'An open plugin ecosystem — SDK, catalog, client and docs — built to be extended and audited, around a platform you can self-host.',
     tone: 'primary',
     icon: 'M3 7h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Zm2.5 0V5a2.5 2.5 0 0 1 4.8-.9',
   },

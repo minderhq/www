@@ -15,8 +15,9 @@ export default function PlatformOverview() {
               Most AI sends your data somewhere else. Minder doesn&apos;t.
             </h2>
             <p className="m-0 max-w-[460px] text-[15px] leading-[1.65] text-ink-dim">
-              Chat, knowledge, models, plugins, and settings — one calm interface, running entirely on infrastructure
-              you own. No API key screen, because there is no external API to call.
+              Chat, knowledge, models, plugins, and settings — one calm interface, running on infrastructure
+              you control. Local models by default, with no cloud API key required to get started; add a remote
+              model only when you choose to.
             </p>
           </div>
           <span className="whitespace-nowrap font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-dim lg:justify-self-end">

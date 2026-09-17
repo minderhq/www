@@ -5,7 +5,7 @@ import SectionHeading from './SectionHeading'
 
 const COMPARE = [
   { row: 'Where data lives', cloud: "On a vendor's servers", minder: 'On your own hardware' },
-  { row: 'Billing', cloud: 'Metered per token', minder: 'Flat — your electricity bill' },
+  { row: 'Inference cost', cloud: 'Metered per token', minder: 'No per-token metering — run models you host' },
   { row: 'Model choice', cloud: 'Whatever the vendor ships', minder: 'Any local or remote model you allow' },
   { row: 'Extending it', cloud: 'Closed, vendor-approved plugins', minder: 'Open, manifest-based plugins you can audit' },
 ]
