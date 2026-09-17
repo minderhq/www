@@ -57,8 +57,7 @@ export default function Footer() {
               More possibilities.
             </h2>
             <p className="m-0 mb-4 ml-auto max-w-[440px] text-[15px] leading-[1.65] text-ink-dim">
-              Run your AI stack on your own infrastructure. Keep your data private, reduce costs and
-              get full control over your environment.
+              Run your AI stack on your own infrastructure. <br /> Keep data private, cut costs, and stay in control.
             </p>
             <a
               href="#solutions"
@@ -85,12 +84,16 @@ export default function Footer() {
         </Reveal>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto_280px_auto] md:gap-16">
-          <div className="max-w-[280px]">
+     
             <div className="mb-3 flex items-center gap-2.5">
-              <Logomark className="h-6 w-6 text-ink" />
-              <span className="font-display text-[17px] font-semibold text-ink">Minder</span>
-            </div>
-            <p className="m-0 text-[13.5px] leading-[1.6] text-ink-dim">Your data. Your AI. Your control.</p>
+              <Logomark className="h-16 w-16 text-ink" />
+              <div className="mb-3 items-center gap-2.5">
+                <span className="font-display text-[24px] font-semibold text-ink">Minder</span>
+                <p className="m-0 text-[12px] leading-[1.6] text-ink-dim">Your data. Your AI. Your control.</p>
+              </div>
+
+       
+
           </div>
 
           <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
