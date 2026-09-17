@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MagneticLink from './MagneticLink'
-import ThemeToggle from './ThemeToggle'
 import Logomark from './Logomark'
 
 const LINKS = [
@@ -72,7 +71,7 @@ export default function Nav() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Logomark className="h-6 w-6 text-logo" />
+          <Logomark className="h-6 w-6 text-ink" />
           <span className="font-display text-[18px] font-semibold tracking-tight text-ink">Minder</span>
         </motion.a>
 
@@ -102,9 +101,6 @@ export default function Nav() {
               </a>
             </motion.li>
           ))}
-          <li className="mt-2 md:hidden">
-            <ThemeToggle />
-          </li>
           <motion.li
             className="mt-4 md:mt-0 md:ml-2"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -120,10 +116,6 @@ export default function Nav() {
             </MagneticLink>
           </motion.li>
         </motion.ul>
-
-        <div className="hidden items-center gap-4 md:flex">
-          <ThemeToggle />
-        </div>
 
         <button
           aria-label="Toggle navigation"
