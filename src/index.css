@@ -18,7 +18,6 @@
   --highlight: #a8b383;
   --cream: #f3eed0;
   --terracotta: #b16446;
-  --logo: #183d2c;
 
   /* RGB channel triplets, kept in sync with the hex values above — these
      feed Tailwind's rgb(var(--x-rgb) / <alpha-value>) opacity modifiers,
@@ -36,7 +35,6 @@
   --highlight-rgb: 168 179 131;
   --cream-rgb: 243 238 208;
   --terracotta-rgb: 177 100 70;
-  --logo-rgb: 24 61 44;
 }
 
 [data-theme='light'] {
@@ -54,7 +52,6 @@
   --highlight: #889859;
   --cream: #f3eed0;
   --terracotta: #b16446;
-  --logo: #183d2c;
 
   --bg-rgb: 245 244 237;
   --surface-rgb: 255 255 255;
@@ -69,7 +66,6 @@
   --highlight-rgb: 136 152 89;
   --cream-rgb: 243 238 208;
   --terracotta-rgb: 177 100 70;
-  --logo-rgb: 24 61 44;
 }
 
 html {

@@ -26,7 +26,6 @@ export default {
         highlight: 'rgb(var(--highlight-rgb) / <alpha-value>)',
         cream: 'rgb(var(--cream-rgb) / <alpha-value>)',
         terracotta: 'rgb(var(--terracotta-rgb) / <alpha-value>)',
-        logo: 'rgb(var(--logo-rgb) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],

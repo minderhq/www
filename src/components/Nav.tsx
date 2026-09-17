@@ -72,8 +72,8 @@ export default function Nav() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Logomark className="h-6 w-6 text-logo" />
-          <span className="font-display text-[18px] font-semibold tracking-tight text-ink">Minder</span>
+          <Logomark className="h-6 w-6 text-accent" />
+          <span className="font-display text-[18px] font-semibold tracking-tight text-accent">Minder</span>
         </motion.a>
 
         <motion.ul
