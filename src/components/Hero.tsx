@@ -15,9 +15,9 @@ const item = {
 }
 
 const STATS = [
-  { label: '100%', sub: 'Local' },
-  { label: 'MIT', sub: 'Licensed' },
-  { label: '0', sub: 'API Calls' },
+  { label: 'Local', sub: 'by default' },
+  { label: 'BYO', sub: 'models' },
+  { label: 'Open', sub: 'ecosystem' },
 ]
 
 export default function Hero() {
@@ -40,7 +40,7 @@ export default function Hero() {
             className="mb-7 flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-dim"
           >
             <span className="eyebrow-dot" />
-            Self-hosted · Local-first · Open source
+            Self-hosted · Local-first · Open ecosystem
           </motion.div>
 
           {/* headline */}
@@ -69,8 +69,9 @@ export default function Hero() {
             variants={item}
             className="mb-9 max-w-[430px] text-[16px] leading-[1.7] text-ink-dim"
           >
-            No API key screens. No data leaving your server. No vendor lock-in.
-            Clone the repo and you&rsquo;ll have a private AI stack running in about a minute.
+            Local-first by default: your models, knowledge and tools run on
+            infrastructure you control. Self-host it, or use the hosted version
+            &mdash; and extend it through an open plugin ecosystem.
           </motion.p>
 
           {/* CTAs */}
@@ -85,7 +86,7 @@ export default function Hero() {
               </svg>
             </MagneticLink>
             <MagneticLink
-              href="https://github.com/wish-maker/minder"
+              href="https://github.com/minderhq"
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-[13px] font-mono text-[11px] uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:border-accent hover:text-accent"
             >
               <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5">

@@ -12,9 +12,9 @@ const COLUMNS = [
   {
     title: 'Resources',
     links: [
-      { label: 'GitHub', href: 'https://github.com/wish-maker/minder' },
-      { label: 'Documentation', href: 'https://github.com/wish-maker/minder/tree/main/docs' },
-      { label: 'Contributing', href: 'https://github.com/wish-maker/minder/blob/main/CONTRIBUTING.md' },
+      { label: 'GitHub', href: 'https://github.com/minderhq' },
+      { label: 'Documentation', href: 'https://github.com/minderhq/docs' },
+      { label: 'Plugin SDK', href: 'https://github.com/minderhq/plugin-sdk' },
     ],
   },
 ]
@@ -51,10 +51,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-dim">
-          <span>© 2026 Minder · MIT Licensed</span>
+          <span>© 2026 Minder · Closed core, open ecosystem</span>
           <span className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Local inference · nothing leaves the box
+            Local-first · self-host or hosted
           </span>
         </div>
       </div>
