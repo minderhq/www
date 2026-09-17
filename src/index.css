@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark is the primary Minder identity — the atmospheric default. */
+:root {
+  color-scheme: dark;
+  --bg: #0b1411;
+  --surface: #101d18;
+  --surface-2: #162721;
+  --primary: #6f9a78;
+  --primary-hover: #88b08e;
+  --secondary: #889859;
+  --accent: #3d8790;
+  --text: #f1f0e8;
+  --text-2: #a8b2a9;
+  --border: #293832;
+  --highlight: #a8b383;
+  --cream: #f3eed0;
+  --terracotta: #b16446;
+  --logo: #183d2c;
+
+  /* RGB channel triplets, kept in sync with the hex values above — these
+     feed Tailwind's rgb(var(--x-rgb) / <alpha-value>) opacity modifiers,
+     since a var() holding a hex color can't be composed with an alpha value. */
+  --bg-rgb: 11 20 17;
+  --surface-rgb: 16 29 24;
+  --surface-2-rgb: 22 39 33;
+  --primary-rgb: 111 154 120;
+  --primary-hover-rgb: 136 176 142;
+  --secondary-rgb: 136 152 89;
+  --accent-rgb: 61 135 144;
+  --text-rgb: 241 240 232;
+  --text-2-rgb: 168 178 169;
+  --border-rgb: 41 56 50;
+  --highlight-rgb: 168 179 131;
+  --cream-rgb: 243 238 208;
+  --terracotta-rgb: 177 100 70;
+  --logo-rgb: 24 61 44;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f4ed;
+  --surface: #ffffff;
+  --surface-2: #edece3;
+  --primary: #183d2c;
+  --primary-hover: #123124;
+  --secondary: #6d6d4b;
+  --accent: #0f5262;
+  --text: #17221f;
+  --text-2: #66706a;
+  --border: #d9d9cf;
+  --highlight: #889859;
+  --cream: #f3eed0;
+  --terracotta: #b16446;
+  --logo: #183d2c;
+
+  --bg-rgb: 245 244 237;
+  --surface-rgb: 255 255 255;
+  --surface-2-rgb: 237 236 227;
+  --primary-rgb: 24 61 44;
+  --primary-hover-rgb: 18 49 36;
+  --secondary-rgb: 109 109 75;
+  --accent-rgb: 15 82 98;
+  --text-rgb: 23 34 31;
+  --text-2-rgb: 102 112 106;
+  --border-rgb: 217 217 207;
+  --highlight-rgb: 136 152 89;
+  --cream-rgb: 243 238 208;
+  --terracotta-rgb: 177 100 70;
+  --logo-rgb: 24 61 44;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--secondary);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* faint atmospheric wash behind the whole page — never a flashy gradient */
+.bg-ambient::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 900px 520px at 12% -8%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 20%, color-mix(in srgb, var(--secondary) 8%, transparent), transparent 60%);
+}
+
+/* the same wash reads as atmosphere over the near-black dark bg, but darkens/muddies
+   the light cream bg — keep only a whisper of it so light stays crisp */
+[data-theme='light'] .bg-ambient::before {
+  background: radial-gradient(ellipse 900px 520px at 12% -8%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 20%, color-mix(in srgb, var(--secondary) 3%, transparent), transparent 60%);
+}
+
+.spotlight-glow {
+  background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--accent) 8%, transparent) 38%, transparent 68%);
+}
+[data-theme='light'] .spotlight-glow {
+  background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 7%, transparent), color-mix(in srgb, var(--accent) 3%, transparent) 38%, transparent 68%);
+}
+
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.surface-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.inline-code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.88em;
+  color: var(--text);
+}
+
+.eyebrow-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.eyebrow-dot::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  animation: ripple 2.8s ease-out infinite;
+}
+@keyframes ripple {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+#product,
+#solutions,
+#docs,
+#about {
+  scroll-margin-top: 88px;
+}
