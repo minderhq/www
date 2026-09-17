@@ -2,3 +2,11 @@ node_modules/
 dist/
 .DS_Store
 *.local
+
+# tsc -b byproducts of tsconfig.node.json (compiling vite.config.ts). These are
+# generated at build time and must NOT be committed: a stale vite.config.js
+# shadows vite.config.ts (Vite resolves .js before .ts), silently ignoring
+# config changes like `base`.
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
