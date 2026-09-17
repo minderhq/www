@@ -13,7 +13,7 @@ const COLUMNS = [
     title: 'Resources',
     links: [
       { label: 'GitHub', href: 'https://github.com/minderhq' },
-      { label: 'Documentation', href: 'https://github.com/minderhq/docs' },
+      { label: 'Documentation', href: 'https://minderhq.github.io/docs/' },
       { label: 'Plugin SDK', href: 'https://github.com/minderhq/plugin-sdk' },
     ],
   },
