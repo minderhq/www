@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto_auto] md:gap-16">
           <div className="max-w-[300px]">
             <div className="mb-3 flex items-center gap-2.5">
-              <Logomark className="h-6 w-6 text-logo" />
+              <Logomark className="h-6 w-6 text-ink" />
               <span className="font-display text-[17px] font-semibold text-ink">Minder</span>
             </div>
             <p className="m-0 text-[13.5px] leading-[1.6] text-ink-dim">

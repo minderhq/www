@@ -16,12 +16,7 @@
       rel="stylesheet"
     />
     <script>
-      try {
-        var t = localStorage.getItem('minder-theme')
-        document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark')
-      } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark')
-      }
+      document.documentElement.setAttribute('data-theme', 'dark')
     </script>
   </head>
   <body>
