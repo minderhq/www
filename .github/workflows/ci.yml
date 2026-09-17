@@ -21,10 +21,13 @@ permissions:
 jobs:
   build:
     name: Build
-    # push (trusted, post-merge) runs on the org's self-hosted pool; pull_request
-    # (including from forks -- this repo is public) stays on GitHub-hosted so an
-    # external contributor's PR never executes on our infrastructure.
-    runs-on: ${{ github.event_name == 'push' && fromJSON('["self-hosted","Linux","X64","org-shared"]') || 'ubuntu-latest' }}
+    # Always GitHub-hosted. This repo is public, so hosted minutes are free, and
+    # the Pages flow can't run on the org's self-hosted pool anyway: both
+    # upload-pages-artifact (FinalizeArtifact -> ENOTFOUND) and the deploy job's
+    # OIDC id-token fetch fail on those runners' egress. Hosted is reliable and
+    # keeps external fork PRs off our infrastructure too. (Because push no longer
+    # targets self-hosted, www needs no drain-public-ci gate flip to deploy.)
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
