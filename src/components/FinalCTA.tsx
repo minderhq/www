@@ -86,7 +86,7 @@ export default function FinalCTA() {
             </p>
             <div className="flex flex-wrap gap-3">
               <MagneticLink
-                href="#docs"
+                href="https://minderhq.github.io/docs/"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-[13px] font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-bg transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_24px_-4px_color-mix(in_srgb,var(--primary)_60%,transparent)]"
               >
                 Get Started
