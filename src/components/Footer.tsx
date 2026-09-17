@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <footer id="about" className="relative overflow-hidden border-t border-border">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[760px] bg-cover bg-center opacity-90"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[450px] bg-cover bg-center opacity-90"
         style={{ backgroundImage: `url(${import.meta.env.BASE_URL}footer.png)` }}
       />
       <div
@@ -91,9 +91,6 @@ export default function Footer() {
                 <span className="font-display text-[24px] font-semibold text-ink">Minder</span>
                 <p className="m-0 text-[12px] leading-[1.6] text-ink-dim">Your data. Your AI. Your control.</p>
               </div>
-
-       
-
           </div>
 
           <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
