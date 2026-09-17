@@ -13,17 +13,21 @@ export default function Footer() {
   const [subscribed, setSubscribed] = useState(false)
 
   return (
-    <footer id="about" className="relative overflow-hidden border-t border-border">
-      {/* the same current-wave artwork used above "why local-first" continues
-          here, fading into --bg toward the bottom bar */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-cover bg-center opacity-[0.55]"
-        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}footer.png)` }}
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px]"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, transparent 40%, var(--bg) 90%)' }}
-      />
+    <footer id="about" className="border-t border-border">
+      {/* full artwork, shown at its native aspect ratio (no crop, no stretch)
+          as its own banner strip, fading into --bg before the footer content */}
+      <div className="relative">
+        <img
+          src={`${import.meta.env.BASE_URL}footer.png`}
+          alt=""
+          aria-hidden="true"
+          className="block w-full h-auto"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+          style={{ background: 'linear-gradient(180deg, transparent, var(--bg))' }}
+        />
+      </div>
 
       <div className="relative mx-auto max-w-container px-6 py-16 sm:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto_300px] md:gap-16">
