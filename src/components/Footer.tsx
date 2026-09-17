@@ -15,14 +15,14 @@ export default function Footer() {
   return (
     <footer id="about" className="relative overflow-hidden border-t border-border">
       {/* the same current-wave artwork used above "why local-first" continues
-          here, fading into --bg well before the text starts */}
+          here, fading into --bg toward the bottom bar */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-cover bg-center opacity-[0.32]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-cover bg-center opacity-[0.55]"
         style={{ backgroundImage: `url(${import.meta.env.BASE_URL}footer.png)` }}
       />
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, var(--bg) 82%)' }}
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px]"
+        style={{ background: 'linear-gradient(180deg, transparent 0%, transparent 40%, var(--bg) 90%)' }}
       />
 
       <div className="relative mx-auto max-w-container px-6 py-16 sm:px-8">
