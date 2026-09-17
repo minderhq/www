@@ -11,7 +11,7 @@ export default function HeroBackdrop() {
         preload="auto"
         aria-hidden="true"
       >
-        <source src="/looping_animation.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}looping_animation.mp4`} type="video/mp4" />
       </video>
 
       {/* subtle top vignette */}
