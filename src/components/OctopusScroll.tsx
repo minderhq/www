@@ -4,7 +4,8 @@ import OctopusBackdrop from './OctopusBackdrop'
 import { CAPABILITIES } from '../data/capabilities'
 
 const FRAME_COUNT = 192
-const FRAME_PATH = (i: number) => `/octopus-frames/frame_${String(i + 1).padStart(3, '0')}.webp`
+const FRAME_PATH = (i: number) =>
+  `${import.meta.env.BASE_URL}octopus-frames/frame_${String(i + 1).padStart(3, '0')}.webp`
 // Native size of the extracted frames — used to letterbox ("contain") each
 // frame inside the canvas without stretching the octopus.
 const FRAME_W = 960
