@@ -7,7 +7,7 @@ import Logomark from './Logomark'
 const LINKS = [
   { href: '#product', label: 'Product' },
   { href: '#solutions', label: 'Solutions' },
-  { href: '#docs', label: 'Docs' },
+  { href: 'https://minderhq.github.io/docs/', label: 'Docs' },
   { href: '#about', label: 'About' },
 ]
 
@@ -112,7 +112,7 @@ export default function Nav() {
             transition={{ duration: 0.4, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
             <MagneticLink
-              href="#docs"
+              href="https://minderhq.github.io/docs/"
               onClick={() => setOpen(false)}
               className="inline-flex whitespace-nowrap rounded-full bg-primary px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-bg transition-colors hover:bg-primary-hover"
             >
