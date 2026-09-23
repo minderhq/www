@@ -93,7 +93,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.4s ease, color 0.4s ease;
@@ -128,13 +128,6 @@ body {
     radial-gradient(ellipse 800px 600px at 100% 20%, color-mix(in srgb, var(--secondary) 3%, transparent), transparent 60%);
 }
 
-.spotlight-glow {
-  background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--accent) 8%, transparent) 38%, transparent 68%);
-}
-[data-theme='light'] .spotlight-glow {
-  background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 7%, transparent), color-mix(in srgb, var(--accent) 3%, transparent) 38%, transparent 68%);
-}
-
 .surface-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -147,7 +140,7 @@ body {
 }
 
 .inline-code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: 'Geist Mono', ui-monospace, monospace;
   background: color-mix(in srgb, var(--text) 6%, transparent);
   border: 1px solid var(--border);
   border-radius: 4px;
