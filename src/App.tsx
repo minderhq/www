@@ -4,10 +4,10 @@ import OctopusScroll from './components/OctopusScroll'
 import CoreCapabilities from './components/CoreCapabilities'
 import PlatformOverview from './components/PlatformOverview'
 import WhyLocalFirst from './components/WhyLocalFirst'
+import Integrations from './components/Integrations'
 import Ecosystem from './components/Ecosystem'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
-import CursorSpotlight from './components/CursorSpotlight'
 
 export default function App() {
   return (
@@ -17,20 +17,15 @@ export default function App() {
         <div id="home">
           <Hero />
         </div>
-        <CursorSpotlight>
-          <CoreCapabilities />
-        </CursorSpotlight>
+        <CoreCapabilities />
         <OctopusScroll />
-        <CursorSpotlight>
-          <PlatformOverview />
-          <WhyLocalFirst />
-          <Ecosystem />
-          <FinalCTA />
-        </CursorSpotlight>
+        <PlatformOverview />
+        <WhyLocalFirst />
+        <Integrations />
+        <Ecosystem />
+        <FinalCTA />
       </main>
-      <CursorSpotlight>
-        <Footer />
-      </CursorSpotlight>
+      <Footer />
     </div>
   )
 }
