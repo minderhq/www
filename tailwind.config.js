@@ -29,9 +29,9 @@ export default {
         logo: 'rgb(var(--logo-rgb) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['"Public Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        display: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: ['"Manrope"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: {
         container: '1160px',

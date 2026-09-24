@@ -37,6 +37,29 @@ export default function OctopusBackdrop() {
         }}
       />
 
+      {/* slow-drifting water caustics — light refracting through a moving surface,
+          matching the swim theme without needing any JS animation loop */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.22] mix-blend-soft-light dark:opacity-[0.3]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <filter id="octopus-caustics" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" numOctaves="2" seed="7" stitchTiles="stitch" result="noise">
+            <animate attributeName="baseFrequency" values="0.012 0.018;0.016 0.012;0.012 0.018" dur="22s" repeatCount="indefinite" />
+          </feTurbulence>
+          <feColorMatrix
+            in="noise"
+            type="matrix"
+            values="0 0 0 0 0.66
+                    0 0 0 0 0.7
+                    0 0 0 0 0.56
+                    0 0 0 0.9 0"
+          />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#octopus-caustics)" />
+      </svg>
+
       {/* SVG grain overlay, matching the hero's texture */}
       <svg
         aria-hidden="true"
