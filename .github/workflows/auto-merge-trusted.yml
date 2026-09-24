@@ -1,0 +1,80 @@
+name: Auto-merge trusted PRs
+
+# Merges a PR from a trusted author as soon as its CI run is green, then
+# deploys. Trusted authors merge their own work anyway; this just removes the
+# "PR sat green but unmerged, so the site never updated" gap (www#22).
+#
+# Why workflow_run and not pull_request: trusted authors open PRs from forks,
+# and a fork PR's pull_request token is read-only. workflow_run runs in THIS
+# repo's context with a write token. It must never check out or execute the
+# PR's code -- it only reads PR metadata via the API and asks GitHub to merge.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  merge:
+    name: Merge if the author is trusted
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # merge
+      pull-requests: write  # merge
+      actions: write        # dispatch the post-merge deploy
+    steps:
+      - name: Merge and deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          # Space-separated GitHub logins. Each must ALSO still hold write
+          # access to this repo at merge time (checked below).
+          TRUSTED_AUTHORS: simhoteps
+          # The exact commit CI just passed. Passed through env, never
+          # interpolated into the script: fork-controlled values stay data.
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          # workflow_run.pull_requests is empty for fork PRs, so find the open
+          # PR whose current head is the commit that just went green.
+          pr=$(gh pr list --state open --base main --limit 100 \
+                 --json number,headRefOid,isDraft,author \
+                 --jq ".[] | select(.headRefOid == \"$HEAD_SHA\")")
+          if [ -z "$pr" ]; then
+            echo "No open PR into main has head $HEAD_SHA (newer push, closed, or other base) -- nothing to do."
+            exit 0
+          fi
+          number=$(jq -r .number <<<"$pr")
+          author=$(jq -r .author.login <<<"$pr")
+
+          if [ "$(jq -r .isDraft <<<"$pr")" = "true" ]; then
+            echo "#$number is a draft -- not merging."; exit 0
+          fi
+          if ! grep -qxF "$author" <(tr ' ' '\n' <<<"$TRUSTED_AUTHORS"); then
+            echo "#$number is by $author, not a trusted author -- leaving it for review."; exit 0
+          fi
+          perm=$(gh api "repos/$GH_REPO/collaborators/$author/permission" --jq .permission)
+          case "$perm" in
+            admin|maintain|write) ;;
+            *) echo "$author no longer has write access ($perm) -- not merging #$number."; exit 0 ;;
+          esac
+
+          # --match-head-commit: refuse if anything was pushed after this CI run.
+          # Branch protection still applies (Build must pass, branch up to date);
+          # if main moved on, GitHub rejects the merge and the author must update.
+          if ! gh pr merge "$number" --merge --match-head-commit "$HEAD_SHA"; then
+            echo "::warning::Could not merge #$number (branch behind main, or protection rules). Update the branch; the next green CI run retries."
+            exit 0
+          fi
+          echo "Merged #$number by $author."
+
+          # A merge made with GITHUB_TOKEN doesn't fire the push event, so CI's
+          # push-triggered deploy wouldn't run. workflow_dispatch is the one
+          # event GITHUB_TOKEN may trigger -- run CI on main explicitly.
+          gh workflow run ci.yml --ref main
+          echo "Dispatched CI on main to build and deploy GitHub Pages."
