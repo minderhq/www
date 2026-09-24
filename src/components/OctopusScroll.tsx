@@ -222,63 +222,67 @@ export default function OctopusScroll() {
         {/* capability copy — set directly into the scene, no card chrome, scaled to match
             the size of the swimming octopus rather than floating as a small isolated widget.
             Legibility comes from a soft glow hugging each glyph (drop-shadow, alpha-aware)
-            rather than a rectangular backdrop, so it never reads as a floating card. */}
-        <div
-          className="pointer-events-none absolute inset-x-6 bottom-10 z-10 transition-opacity duration-500 sm:inset-x-10 sm:bottom-auto sm:right-auto sm:top-1/2 sm:w-[min(92vw,440px)] sm:-translate-y-1/2 lg:left-[6%] lg:w-[460px]"
-          style={{
-            opacity: firstFrameReady ? 1 : 0,
-            filter:
-              'drop-shadow(0 0 3px var(--bg)) drop-shadow(0 0 10px var(--bg)) drop-shadow(0 0 22px var(--bg)) drop-shadow(0 0 22px var(--bg))',
-          }}
-        >
-          <div className="mb-4 flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-dim">
-            <span className="relative flex h-2 w-2 shrink-0">
-              <span
-                className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                style={{ background: `var(--${CAPABILITIES[activeCapability].tone})` }}
-              />
-              <span
-                className="relative inline-flex h-2 w-2 rounded-full transition-colors duration-300"
-                style={{ background: `var(--${CAPABILITIES[activeCapability].tone})` }}
-              />
-            </span>
-            Core capability
-            <span className="ml-auto tabular-nums text-ink-dim/55">
-              {String(activeCapability + 1).padStart(2, '0')} / {String(CAPABILITIES.length).padStart(2, '0')}
-            </span>
-          </div>
-
-          <motion.h3
-            key={activeCapability}
-            initial={{ opacity: 0, y: 14, filter: 'blur(3px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="m-0 font-display font-semibold leading-[1.05] tracking-tight transition-colors duration-300"
-            style={{ fontSize: 'clamp(32px, 4vw, 52px)', color: `var(--${CAPABILITIES[activeCapability].tone})` }}
-          >
-            {CAPABILITIES[activeCapability].title}
-          </motion.h3>
-
+            rather than a rectangular backdrop, so it never reads as a floating card.
+            The wrapper mirrors every other section's `mx-auto max-w-container px-6 sm:px-8`
+            container so its left edge lines up with the copy above and below it. */}
+        <div className="pointer-events-none absolute inset-0 z-10 mx-auto max-w-container px-6 sm:px-8">
           <div
-            className="my-5 h-[3px] w-20 overflow-hidden rounded-full"
-            style={{ background: 'color-mix(in srgb, var(--border) 70%, transparent)' }}
+            className="absolute inset-x-0 bottom-10 transition-opacity duration-500 sm:inset-x-auto sm:bottom-auto sm:left-0 sm:top-1/2 sm:w-[min(92vw,440px)] sm:-translate-y-1/2 lg:w-[460px]"
+            style={{
+              opacity: firstFrameReady ? 1 : 0,
+              filter:
+                'drop-shadow(0 0 3px var(--bg)) drop-shadow(0 0 10px var(--bg)) drop-shadow(0 0 22px var(--bg)) drop-shadow(0 0 22px var(--bg))',
+            }}
           >
-            <div
-              ref={progressLineRef}
-              className="h-full transition-colors duration-300"
-              style={{ width: '0%', background: `var(--${CAPABILITIES[activeCapability].tone})` }}
-            />
-          </div>
+            <div className="mb-4 flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-dim">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span
+                  className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
+                  style={{ background: `var(--${CAPABILITIES[activeCapability].tone})` }}
+                />
+                <span
+                  className="relative inline-flex h-2 w-2 rounded-full transition-colors duration-300"
+                  style={{ background: `var(--${CAPABILITIES[activeCapability].tone})` }}
+                />
+              </span>
+              Core capability
+              <span className="ml-auto tabular-nums text-ink-dim/55">
+                {String(activeCapability + 1).padStart(2, '0')} / {String(CAPABILITIES.length).padStart(2, '0')}
+              </span>
+            </div>
 
-          <motion.p
-            key={`desc-${activeCapability}`}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="m-0 max-w-[400px] text-[16px] leading-[1.75] text-ink-dim"
-          >
-            {CAPABILITIES[activeCapability].desc}
-          </motion.p>
+            <motion.h3
+              key={activeCapability}
+              initial={{ opacity: 0, y: 14, filter: 'blur(3px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="m-0 font-display font-semibold leading-[1.05] tracking-tight transition-colors duration-300"
+              style={{ fontSize: 'clamp(32px, 4vw, 52px)', color: `var(--${CAPABILITIES[activeCapability].tone})` }}
+            >
+              {CAPABILITIES[activeCapability].title}
+            </motion.h3>
+
+            <div
+              className="my-5 h-[3px] w-20 overflow-hidden rounded-full"
+              style={{ background: 'color-mix(in srgb, var(--border) 70%, transparent)' }}
+            >
+              <div
+                ref={progressLineRef}
+                className="h-full transition-colors duration-300"
+                style={{ width: '0%', background: `var(--${CAPABILITIES[activeCapability].tone})` }}
+              />
+            </div>
+
+            <motion.p
+              key={`desc-${activeCapability}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="m-0 max-w-[400px] text-[16px] leading-[1.75] text-ink-dim"
+            >
+              {CAPABILITIES[activeCapability].desc}
+            </motion.p>
+          </div>
         </div>
 
         {/* fade into the next section */}
