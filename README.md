@@ -18,5 +18,5 @@ npm run preview  # preview the production build locally
 ```
 
 Pricing/tiers content is intentionally minimal for now: the free-tier boundary and
-hosted-tier pricing are open product decisions (minderhq/minder#1295), not yet
+hosted-tier pricing are open product decisions, not yet
 finalized — this site won't get ahead of that decision with invented numbers.
