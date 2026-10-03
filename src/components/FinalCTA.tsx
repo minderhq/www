@@ -94,13 +94,16 @@ export default function FinalCTA() {
                   <path d="M2 7h10M8 3l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </MagneticLink>
-              {/* TODO(www): point to the hosted signup/onboarding URL once the production domain is live (see README). */}
-              <MagneticLink
-                href="#hosted"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-[13px] font-mono text-[11px] uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:border-accent hover:text-accent"
+              {/* TODO(www): the hosted signup doesn't exist yet, so this is a non-link
+                  "coming soon" label rather than a dead anchor. Once the production domain
+                  is live (see README), turn it back into a MagneticLink to the hosted
+                  signup/onboarding URL with the label "Try the hosted version". */}
+              <span
+                aria-disabled="true"
+                className="inline-flex cursor-default select-none items-center gap-2 rounded-full border border-dashed border-border px-6 py-[13px] font-mono text-[11px] uppercase tracking-[0.14em] text-ink-dim"
               >
-                Try the hosted version
-              </MagneticLink>
+                Hosted version — coming soon
+              </span>
             </div>
           </motion.div>
 
