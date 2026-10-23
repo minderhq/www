@@ -28,7 +28,7 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     title: 'extensible',
-    desc: 'Connect plugins, integrations, and custom tools through a manifest-based architecture you can audit.',
+    desc: 'Connect plugins, integrations, and custom tools through declarative manifests or reviewed plugins that run isolated, out of process.',
     tone: 'terracotta',
     icon: 'M5 2v4M11 2v4M4 6h8v2c0 2.2-1.8 4-4 4s-4-1.8-4-4V6Zm4 6v2.5',
   },
