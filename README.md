@@ -6,7 +6,7 @@ Status: **MVP landing page** — tracked in [minderhq/www#1](https://github.com/
 Part of the closed-core / open-ecosystem org layout: this site is public; the Minder core is a separate, private repo.
 
 Built with [Vite](https://vite.dev) + [React](https://react.dev) and [Tailwind CSS](https://tailwindcss.com)
-as a static site (no backend). No production domain is registered yet.
+as a static site (no backend). It is served at <https://minderhq.github.io/www/>; no custom domain is registered yet.
 
 ## Development
 
